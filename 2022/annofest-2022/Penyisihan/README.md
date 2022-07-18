@@ -90,4 +90,4 @@ with open("flag.jpg", "wb") as f:
     f.write(jpg_flag)
 ```
 
-disini saya hanya membandingkan header flag jpg dengan jpg lain. Kemudian men-xornya dengan flag yang ditemukan. 
+disini saya hanya membandingkan header flag jpg dengan jpg lain. Kemudian men-xornya dengan key yang ditemukan. 
