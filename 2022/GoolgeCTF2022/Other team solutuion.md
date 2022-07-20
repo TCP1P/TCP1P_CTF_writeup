@@ -20,3 +20,4 @@
 - https://maxniederman.com/posts/google-ctf-2022/ // treebox
 - https://imp.ress.me/blog/2022-07-05/google-ctf-2022-ocr/
 - https://ur4ndom.dev/posts/2022-07-04-gctf-cycling/
+- https://www.youtube.com/watch?v=kzIS3i_QYFI //engraver
