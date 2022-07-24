@@ -1,0 +1,1 @@
+Untuk challenge kali ini, saya hanya perlu mendownload ekstensi absolute clicker di chrome. Kemudian mendownload source code challenge ini.

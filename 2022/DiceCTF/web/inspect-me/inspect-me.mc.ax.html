@@ -1,0 +1,160 @@
+<!doctype html>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  body {
+    background-image: url("background.jpg");
+  }
+  .incorrect {
+    animation: shake 0.25s;
+  }
+  .content {
+    transform: scale(4);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+  }
+  .container {
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+  @keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+</style>
+<script>
+  window.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
+</script>
+<span></span>
+<script>(() => {
+  const m = {
+    log: console.log,
+    clear: console.clear,
+    table: console.table,
+    now: performance.now.bind(performance),
+  };
+
+  const a = Array(100).fill(document.createElement('a'));
+
+  const detector = {
+    state: undefined,
+    listeners: [],
+    worst: 1e-3,
+    addListener(func) {
+      this.listeners.push(func);
+    },
+
+    // loop
+    update() {
+      let start = m.now();
+      m.log(a);
+      const log = m.now() - start;
+      m.table(a);
+      const table = m.now() - start - log;
+
+      m.clear();
+
+      this.worst = Math.max(log, this.worst);
+
+      const logging = table > 10 * this.worst;
+
+      const threshold = 160;
+      const size =
+        window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold;
+
+      const next = size || logging;
+      if (next === this.state) return;
+      this.state = next;
+      this.listeners.forEach((func) => func(this.state));
+    },
+  };
+
+  setInterval(() => {
+    detector.update();
+    m.log('hey, no cheating!');
+  }, 100);
+
+  const state = {
+    reloadOnClose: false,
+    reloadOnOpen: false,
+  };
+
+  const opened = () => {
+    state.reloadOnClose = true;
+    if (state.reloadOnOpen) {
+      window.location.reload();
+    }
+    document.body.innerHTML = `
+      <div class="container">
+        <div class="content">hey, no cheating!</div>
+      </div>
+    `;
+  };
+
+  const closed = () => {
+    state.reloadOnOpen = true;
+    if (state.reloadOnClose) {
+      window.location.reload();
+    } else {
+      navigator.sendBeacon('load');
+    }
+  };
+
+  detector.addListener((state) => (state ? opened() : closed()));
+})();
+</script><div class="container">
+  <form class="content">
+    <input type="text" placeholder="Password..."/>
+    <input type="submit" value="Check!" />
+  </form>
+</div>
+<script>(() => {
+  const scripts = document.querySelectorAll('script');
+  scripts.forEach((script) => script.remove());
+
+  const chr = (c) => c.charCodeAt(0);
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = document.querySelector('input[type="text"]');
+    const output = [];
+    for (const char of input.value.split('').map(chr)) {
+      if (chr('a') <= char && char <= chr('z')) {
+        output.push(chr('a') + ((char - chr('a') + 13) % 26));
+      } else if (chr('A') <= char && char <= chr('Z')) {
+        output.push(chr('A') + ((char - chr('A') + 13) % 26));
+      } else {
+        output.push(char);
+      }
+    }
+    const target = 'ubcr{pyvrag_fvqr_pyvpur}';
+    if (output.map((c) => String.fromCharCode(c)).join('') === target) {
+      document.querySelector('.content').textContent = 'Correct!';
+    } else {
+      input.removeAttribute('style');
+      input.offsetWidth;
+      input.style.animation = 'shake 0.25s';
+    }
+  });
+})();
+</script>
