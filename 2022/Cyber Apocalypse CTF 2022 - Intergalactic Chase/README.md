@@ -101,10 +101,6 @@ txt = ' '.join(txt[i:i+2] for i in range(0, len(txt), 2))
 print(txt)
 ```
 
-### Tidak Berfungsi
-![](./dump/decode.py)
-![](./dump/source.py)
-
 ## Omega One
 
 list_dump.txt
