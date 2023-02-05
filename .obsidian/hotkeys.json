@@ -1,0 +1,19 @@
+{
+  "obsidian-dynamic-toc:dynamic-toc-insert-command": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "."
+    }
+  ],
+  "obsidian-plugin-toc:create-toc-next-level": [],
+  "obsidian-plugin-toc:create-toc": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "."
+    }
+  ]
+}
