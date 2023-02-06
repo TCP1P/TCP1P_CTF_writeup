@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d6793d4791aa648a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023/DiceCTF-2023/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/bbctf-2023/README.md",
+                "file": "2023/DiceCTF-2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/bbctf-2023/README.md",
+                "file": "2023/DiceCTF-2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/bbctf-2023/README.md"
+                "file": "2023/DiceCTF-2023/README.md"
               }
             }
           }
@@ -159,12 +171,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9e78f5c807ef02fa",
+  "active": "d6793d4791aa648a",
   "lastOpenFiles": [
+    "2023/bbctf-2023/README.md",
     "2023/bbctf-2023/Pasted image 20230206062127.png",
     "2023/bbctf-2023/Pasted image 20230206062215.png",
     "2023/bbctf-2023/Pasted image 20230206062218.png",
-    "2023/bbctf-2023/README.md",
     "2023/Knightctf-2023/README.md",
     "2023/IdekCTF-2022/README.md",
     "README.md",
