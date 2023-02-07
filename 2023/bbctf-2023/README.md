@@ -118,6 +118,33 @@ Setelah itu kita masukkan ke server, dan kita akan mendaptkan flagnya
 
 # Forensic
 ---
+```sh
+## http on wireshark file
+tshark -r random_requests.pcapng -Y "http.request.method == \"GET\"" -T fields -e http.request.uri | grep '1\|0\|%20' | cut -d= -f2 | tr -d "\n\r" | sed 's/%20/ /g' > solve.txt
+
+## convert binary to ascii
+python3 solve.py | base64 -d
+```
+
+untuk file python-nya:
+
+```python
+with open("solve.txt", "r") as binary_data:
+#binary_data = "01011010"
+        # Read the binary string from the text file
+        binary_read_data = binary_data.read().strip()
+
+        # read data using space
+        binary_list = binary_read_data.split(" ")
+        binary_string = "".join(binary_list)
+
+        # convert to ascii string
+        decoded_data = bytes.fromhex(hex(int(binary_string, 2))[2:]).decode("utf-8")
+
+        # print output
+        print(decoded_data)
+```
+
 ## Memory Dump
 
 ```

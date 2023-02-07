@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023/DiceCTF-2023/README.md",
+                "file": "2023/bbctf-2023/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/DiceCTF-2023/README.md",
+                "file": "2023/bbctf-2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/DiceCTF-2023/README.md",
+                "file": "2023/bbctf-2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/DiceCTF-2023/README.md"
+                "file": "2023/bbctf-2023/README.md"
               }
             }
           }
@@ -173,6 +173,7 @@
   },
   "active": "d6793d4791aa648a",
   "lastOpenFiles": [
+    "2023/DiceCTF-2023/README.md",
     "2023/bbctf-2023/README.md",
     "2023/bbctf-2023/Pasted image 20230206062127.png",
     "2023/bbctf-2023/Pasted image 20230206062215.png",
@@ -181,7 +182,6 @@
     "2023/IdekCTF-2022/README.md",
     "README.md",
     "__TOC__.md",
-    "2022/2022.md",
-    "2022/kitctfctf-2022/README.md"
+    "2022/2022.md"
   ]
 }
