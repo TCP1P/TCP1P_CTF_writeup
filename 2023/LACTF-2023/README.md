@@ -16,7 +16,7 @@ Di challenge ini kita harus mendapatkan admin `displayName` dengan cara berteman
 #### Recon
 Pada challenge ini kita diberikan link web challenge dan link bot. Kita juga diberikan source code dari challenge ini berupa `index.js` sebagai berikut:
 
-```javascript=
+```javascript
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -202,7 +202,7 @@ app.listen(port, () => {
 
 Yang pertama kali perlu kita tahu yaitu flag berada di `displayName` admin:
 
-```javascript=
+```javascript
 accounts.set("admin", {
     password: adminpw,
     displayName: flag,
@@ -213,7 +213,7 @@ accounts.set("admin", {
 
 `displayName` dari admin bisa kita dapatkan dengan cara berteman dengan admin dengan melakukan post request ke `/friend`
 
-```javascript=
+```javascript
 app.post("/friend", needsAuth, (req, res) => {
     res.type("text/plain");
     const username = req.body.username.trim();
@@ -239,7 +239,7 @@ Dan nanti daftar `displayName` akan muncul di `/`:
 
 Untuk mengeksploit challenge ini kita bisa memanfaatkan XSS yang berada di `/post/:id` dimana di kode tersebut akan me-replace `$CONTENT` tanpa me-sanitizenya terlebih dahulu sehingga vulnerable dengan XSS.
 
-```javascript=
+```javascript
 // templating engines are for losers!
 const postTemplate = fs.readFileSync(path.join(__dirname, "post.html"), "utf8");
 app.get("/post/:id", (req, res) => {
@@ -257,7 +257,7 @@ Kita bisa memanfaatkan XSS ini dengan cara membuat `metapost` baru dan menggunak
 
 payload:
 
-```htmlbars=
+```html
 <script>
     const username = "asd"
     fetch("/friend", {
