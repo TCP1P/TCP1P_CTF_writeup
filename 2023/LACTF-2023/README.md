@@ -1124,6 +1124,9 @@ print("new cookie: "+new_auth)
 a = requests.get(URL, cookies={"auth": new_auth})
 print(a.text)
 ```
+
+reference: https://github.com/5t0n3/ctf-writeups/tree/main/2023-lactf/web/zero-trust
+
 # Crypto
 ---
 ## chinese-lazy-theorem-1
