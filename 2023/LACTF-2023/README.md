@@ -1153,6 +1153,56 @@ print(r.recvline().decode())
 
 ![](Pasted%20image%2020230214115929.png)
 
+## greek cipher
+
+```python
+from collections import OrderedDict
+from string import ascii_lowercase
+'''
+# lactf{i_guess_using_many_greek_characters_didn't_stop_you._well_played_i_must_say.congrats!}
+'''
+def decrypt(greek, key):
+    decrypted_str = greek.translate(str.maketrans(key, ascii_lowercase))
+    return decrypted_str
+
+def replace_all(text, dic):
+    for i, j in dic.items():
+        text = text.replace(i, j)
+    return text
+
+# Ref: https://www.rapidtables.com/math/symbols/greek_alphabet.html
+od = OrderedDict([
+    ("α", "a"), ("β", "b"),
+    ("ς", "c"), ("δ", "d"),
+    ("ε", "e"), ("\\x01", "f"),
+    ("γ", "g"), ("χ", "h"),
+    ("ι", "i"), ("τ", "j"),
+    ("κ", "k"), ("λ", "l"),
+    ("μ", "m"), ("ν", "n"),
+    ("ο", "o"), ("π", "p"),
+    ("ρ", "r"), ("η", "q"),
+    ("σ", "s"), ("θ", "t"), 
+    ("υ", "u"), ("\\x02", "v"),
+    ("ω", "w"), ("ξ", "x"),
+    ("ψ", "y"), ("ζ", "z")
+    ])
+
+txtFile = "greek.txt"
+txt = open(txtFile, 'r').read()
+
+# sxmkgdeqchaojzpyfrtinulvwb (Brute)
+# decode.fr :
+# ⇒ SXMKGDEQCHAOJZPYBRTINULFWV (Original Encryption Alphabet)
+key = "SXMKGDEQCHAOJZPYBRTINULFWV".lower()
+
+s = str(txt)
+cipher = replace_all(s, od)
+
+print(cipher)
+print()
+print(decrypt(cipher, key))
+```
+
 # Misc
 ---
 ## CATS!
@@ -1184,4 +1234,24 @@ for j in search(term, num_results=1):
 print(flag+fl+'}')
 ```
 
-# 
+# Another writeup from our team
+
+https://github.com/daffainfo/ctf-writeup/tree/main/LACTF%202023
+Daftar chall:
+- college-tour
+- my-chemical-romance
+- one-more-time-pad
+- rolling in the mud
+- discord
+- hidden in plain sheets
+- hike to where
+
+https://github.com/hailgodmadoka/ctf-writeup/tree/main/lactf-upload
+Daftar chall:
+- rev - string-cheese
+- rev - caterpillar
+- rev - finals-simulator
+- rev - universal
+- rev - ctfd-plus
+- rev - switcheroo 
+
