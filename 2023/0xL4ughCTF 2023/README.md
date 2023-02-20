@@ -277,14 +277,15 @@ Kita jalankan dan login menggunakan akun tersebut, maka sekarang kita akan menda
 # External writeup
 ---
 A brief proof of concept from 0xL4ugh CTF 2023's forensic problems
+
 By: hanasuru [link](https://gist.github.com/hanasuru/25d13a7432c417945ee5330329c8e0f8/raw/ded087cc04c8665bfe02717c7d85768e8e8862fa/0xL4ugh_Forensic_PoC.md)
 
 https://github.com/daffainfo/ctf-writeup/tree/main/0xL4ughCTF%202023
-Web - Bruh
-Web - Bruh 2
-Web - Bypass 403
-Web - bypasser
-Web - XSS 1
-Steganography - Colorful
-Osint - El bes
+- Web - Bruh
+- Web - Bruh 2
+- Web - Bypass 403
+- Web - bypasser
+- Web - XSS 1
+- Steganography - Colorful
+- Osint - El bes
 
