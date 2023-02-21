@@ -291,3 +291,8 @@ https://github.com/daffainfo/ctf-writeup/tree/main/0xL4ughCTF%202023
 - Steganography - Colorful
 - Osint - El bes
 
+https://hackmd.io/@TuX-/BkWQh8a6i
+- Wanna Series Volatility 3 ver. + python script extract .ad1
+- dll
+late post.
+
