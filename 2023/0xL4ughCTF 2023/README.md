@@ -1,4 +1,3 @@
-# XSS2 - Web
 
 ## TL;DR
 
