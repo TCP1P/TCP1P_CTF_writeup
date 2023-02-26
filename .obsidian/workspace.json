@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8c31262cad41cf41",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023/ARACTF2023/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,7 +159,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dc48afa62c07e87c",
+  "active": "390839dfd0d0fbff",
   "lastOpenFiles": [
     "2023/LACTF-2023/README.md",
     "2023/0xL4ughCTF 2023/README.md",

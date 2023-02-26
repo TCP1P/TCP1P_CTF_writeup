@@ -5,6 +5,13 @@ Member:
 1. aimardcr
 2. Dimas Maulana
 
+```toc
+style: number
+min_depth: 1
+max_depth: 2
+```
+
+
 # Web
 ## Dewaweb
 ### Description
