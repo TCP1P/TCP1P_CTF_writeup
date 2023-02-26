@@ -5,13 +5,6 @@ Member:
 1. aimardcr
 2. Dimas Maulana
 
-```toc
-style: number
-min_depth: 1
-max_depth: 2
-```
-
-
 # Web
 ## Dewaweb
 ### Description
@@ -693,3 +686,138 @@ Pilih addressnya lalu tekan CTRL + B untuk membuka window Browse Memory dan got 
 
 Hal ini masuk akal, karena kita menemukan sebuah string dengan kondisi yang sama, yaitu diawali dan diakhiri dengan `_`, di-isi string dengan length 5 diantara `_` tersebut.
 FLAG: ARA2023{w0w_did_y0u_f1nd_m3_in_th3_m3m0ry_4nd_u_dUmP_m3?}
+
+## PwnDroid (Solved after the competition ends)
+## Description
+Another real-world bad mobile dev perspective so he got an unbreakable Schrödinger-cryptic puzzle APK. Give me the secrets!
+## Technical Review
+(Disini saya hanya akan memberikan step-by-step cara solve yang saya lakukan, tidak dengan semua attempt yang saya coba, karena saya sendiri menghabiskan hampir 1 hari mencoba berbagai macam cara yang gagal)
+
+Diberikan sebuah APK Android, yang dimana ketika saya analisa lebih lanjut, aplikasi ini menggunakan `Flutter` sebagai kode utama dari aplikasi tersebut. Sayangnya disini aplikasi tersebut di-_build_ dengan `release mode`, menyebabkan tidak adaknya _kernel blob.bin_ yang memudahkan kita dalam menganalisa aplikasi ini.
+
+Pada dasarnya aplikasi ini meminta kita untuk memasukkan flag dari user dan melakukan perbandingan flag tersebut dengan flag aslinya.
+
+Karena disini aplikasi di-_build_ dengan `release mode`, kode-kode pada aplikasi tidak berada pada `kernel_blob.bin`, namun di-_compile_ menuju `libapp.so`. Untuk memecahkan masalah ini, kita bisa menggunakan [reFlutter](https://github.com/Impact-I/reFlutter) untuk mendapatkan informasi mengenai fungsi fungsi yang ada pada aplikasi ini. Setelah aplikasi kita patch menggunakan `reFlutter`, lakukan _sign_ pada APK-nya dan install pada emulator, karena kita perlu mengakses file internal untuk mengambil `dump.dart` atau file yang telah didump oleh aplikasi yang telah kita patch.
+
+Setelah itu, saya menggunakan menggunakan source [berikut](https://github.com/Guardsquare/flutter-re-demo/blob/main/) untuk mendapatkan script yang nantinya bisa kita load di ida pro, script ini bertujuan untuk me-rename semua fungsi pada IDA untuk memudahkan proses analisa.
+
+Before Script:
+![](https://i.imgur.com/GtuW6el.png)
+
+After Script:
+![](https://i.imgur.com/8Bz2Fwt.png)
+
+Disini langsung saya terpaku dengan beberapa fungsi berikut:
+![](https://i.imgur.com/0zcddIC.png)
+
+
+Setelah diteliti lebih lanjut, aplikasi ini menggunakan `Salsa20` sebagai perlindungan pada string. Setelah beberapa percakapan dengan Problem Setter, diketahui bahwa flag-nya ternyata tersimpan pada `libapp.so` secara statis, lebih tepatnya diformat dalam `base64`, dan benar saja, terdapat sebuah string yang panjang dengan format `base64`:![](https://i.imgur.com/b97K1Er.png)
+
+Jika kita ikuti fungsi `Encrypt`, maka k
+```c
+bool __fastcall MyHomePageState(__int64 a1, __int64 a2)
+{
+  __int64 v2; // x15
+  __int64 v3; // x22
+  __int64 v4; // x26
+  __int64 v5; // x27
+  __int64 v6; // x29
+  __int64 v7; // x30
+  _QWORD *v8; // x29
+  __int64 v9; // x15
+  __int64 v10; // x0
+  __int64 v11; // x15
+  __int64 v12; // x16
+  __int64 v13; // x0
+  __int64 v14; // x15
+  __int64 v15; // x1
+  __int64 v16; // x0
+  __int64 v17; // x0
+  __int64 v18; // x15
+  __int64 v19; // x0
+  __int64 v20; // x1
+  __int64 v21; // x0
+  __int64 v22; // x0
+  __int64 v23; // x15
+  __int64 v24; // x0
+  __int64 v25; // x15
+  __int64 v26; // x0
+  __int64 v27; // x15
+  __int64 v28; // x16
+  __int64 v29; // x1
+
+  *(_QWORD *)(v2 - 0x10) = v6;
+  *(_QWORD *)(v2 - 8) = v7;
+  v8 = (_QWORD *)(v2 - 0x10);
+  if ( (unsigned __int64)(v2 - 0x30) <= *(_QWORD *)(v4 + 0x38) )
+    sub_3BAEDC(a1, a2);
+  v8[0xFFFFFFFF] = sub_2F8BB8();
+  *(_DWORD *)(v8[0xFFFFFFFF] + 7LL) = sub_3BA9EC();
+  *(_QWORD *)(v9 - 8) = v8[2];
+  v9 -= 8LL;
+  *(_QWORD *)(v9 - 0x10) = v3;
+  *(_QWORD *)(v9 - 8) = 0LL;
+  *(_QWORD *)(v9 - 0x18) = v3;
+  v10 = StringBase();
+  v11 += 0x20LL;
+  v12 = *(_QWORD *)(v5 + 0x5B0);
+  *(_QWORD *)(v11 - 0x10) = v10;
+  *(_QWORD *)(v11 - 8) = v12;
+  v13 = Codec::encode();
+  v14 += 0x10LL;
+  *(_QWORD *)(v14 - 0x10) = v13;
+  *(_QWORD *)(v14 - 8) = v3;
+  v8[0xFFFFFFFE] = Uint8List::Uint8List_fromList();
+  v15 = sub_2F8BA8();
+  v16 = v8[0xFFFFFFFE];
+  v8[0xFFFFFFFD] = v15;
+  *(_DWORD *)(v15 + 7) = v16;
+  v17 = sub_2F8B98();
+  v8[0xFFFFFFFE] = v17;
+  *(_QWORD *)(v18 - 8) = v17;
+  v19 = Salsa20Engine::Salsa20Engine_();
+  v20 = sub_2F8A64(v19);
+  v21 = v8[0xFFFFFFFE];
+  v8[0xFFFFFFFC] = v20;
+  *(_DWORD *)(v20 + 0xB) = v21;
+  *(_DWORD *)(v20 + 7) = v8[0xFFFFFFFF];
+  v22 = sub_2F8A54();
+  *(_DWORD *)(v22 + 7) = v8[0xFFFFFFFC];
+  *(_QWORD *)(v23 - 0x10) = v8[3];
+  *(_QWORD *)(v23 - 8) = v22;
+  *(_QWORD *)(v23 - 0x18) = v8[0xFFFFFFFD];
+  v24 = Encrypter::encrypt();
+  *(_QWORD *)(v25 + 0x10) = v24;
+  v26 = Encrypted::get::base64();
+  v27 += 8LL;
+  v28 = v8[4];
+  *(_QWORD *)(v27 - 0x10) = v26;
+  *(_QWORD *)(v27 - 8) = v28;
+  return 2 * MyHomePageState(v26, v29) == 2;
+}
+```
+Bisa dilihat bahwa disini ketika string sudah diencrypt dan dijadikan `base64`, akan ada sebuah fungsi yang membandikan hasil `base64` tersebut dengan flag-nya (yang dimana disini sudah menjadi `base64`)
+
+Jadi intinya, string hasil input kita akan diencrypt dengan cipher Salsa20, lalu dijadikan `base64` dan dibandingkan dengan flag yang telah diencrypt dan dijadikan `base64` juga secara statis.
+
+Karena kita sudah memiliki flag dan tipe enkripsinya, kita cukup mencari `Key` dan `IV` untuk melakukan dekripsi pada flag. Untuk melakukan leak, disini saya akan melakukan hook pada fungsi `Salsa20Engine::setKey(Key, IV)`
+
+Disini saya akan menggunakan `frida` untuk melakukan hook pada fungsi tersebut, berikut script yang digunakan:
+```js
+function run() {
+    var app = Module.findBaseAddress("libapp.so")
+    Interceptor.attach(app.add(0x2F67AC), {
+        onEnter: function(args) {
+            console.log(this.returnAddress.sub(app));
+            console.log(hexdump(args[0]));
+            console.log(hexdump(args[1]));
+        },
+        onLeave: function(retval) {
+            console.log(hexdump(retval));
+        }
+    });
+}
+run();
+```
+Script tersebut akan melakukan hook pada fungsi `setKey` dan melakukan dump guna mencari Key dan IV yang dicari.
+
