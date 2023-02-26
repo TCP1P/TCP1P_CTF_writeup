@@ -688,9 +688,9 @@ Hal ini masuk akal, karena kita menemukan sebuah string dengan kondisi yang sama
 FLAG: ARA2023{w0w_did_y0u_f1nd_m3_in_th3_m3m0ry_4nd_u_dUmP_m3?}
 
 ## PwnDroid (Solved after the competition ends)
-## Description
+### Description
 Another real-world bad mobile dev perspective so he got an unbreakable Schrödinger-cryptic puzzle APK. Give me the secrets!
-## Technical Review
+### Technical Review
 (Disini saya hanya akan memberikan step-by-step cara solve yang saya lakukan, tidak dengan semua attempt yang saya coba, karena saya sendiri menghabiskan hampir 1 hari mencoba berbagai macam cara yang gagal)
 
 Diberikan sebuah APK Android, yang dimana ketika saya analisa lebih lanjut, aplikasi ini menggunakan `Flutter` sebagai kode utama dari aplikasi tersebut. Sayangnya disini aplikasi tersebut di-_build_ dengan `release mode`, menyebabkan tidak adaknya _kernel blob.bin_ yang memudahkan kita dalam menganalisa aplikasi ini.
