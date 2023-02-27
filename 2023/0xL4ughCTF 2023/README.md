@@ -1,4 +1,4 @@
-
+# XSS2
 ## TL;DR
 
 Pada challenge ini kita perlu melakukan DOM clobbering untuk membypass isAdmin di client side, sehingga nantinya kita dapat meload `content` apapun dari source yang ada di server, setelah itu kita perlu melakukan upload dan membypass image check yang ada di server menggunakan ekstensi GIF89a dan meload file yang kita upload di server tadi, sehingga kita mendapatkan XSS.
