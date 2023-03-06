@@ -821,3 +821,13 @@ run();
 ```
 Script tersebut akan melakukan hook pada fungsi `setKey` dan melakukan dump guna mencari Key dan IV yang dicari.
 
+# Another writeup
+binary exploitation writeup by admin: [https://drive.google.com/file/d/1pDbGgfqMXdMjmVZk8XldHHW7XZMVbeIW/view](https://drive.google.com/file/d/1pDbGgfqMXdMjmVZk8XldHHW7XZMVbeIW/view "https://drive.google.com/file/d/1pDbGgfqMXdMjmVZk8XldHHW7XZMVbeIW/view")
+
+Foren (Scraped Bin, Leakages, Leecher)
+- [https://gist.github.com/hanasuru/34b11b8883451e9d0e2b510c0294eaad](https://gist.github.com/hanasuru/34b11b8883451e9d0e2b510c0294eaad "https://gist.github.com/hanasuru/34b11b8883451e9d0e2b510c0294eaad") 
+- [https://gist.github.com/hanasuru/197e327fd16c92620187ab321ca6dfc5](https://gist.github.com/hanasuru/197e327fd16c92620187ab321ca6dfc5 "https://gist.github.com/hanasuru/197e327fd16c92620187ab321ca6dfc5")
+- [https://gist.github.com/hanasuru/e07bc1f36d3f90ed18cb7ef0f3025579](https://gist.github.com/hanasuru/e07bc1f36d3f90ed18cb7ef0f3025579 "https://gist.github.com/hanasuru/e07bc1f36d3f90ed18cb7ef0f3025579") 
+
+Misc (Snake pit)
+- [https://gist.github.com/hanasuru/702212eddffbfeaf777b5f9f2676d602](https://gist.github.com/hanasuru/702212eddffbfeaf777b5f9f2676d602 "https://gist.github.com/hanasuru/702212eddffbfeaf777b5f9f2676d602")

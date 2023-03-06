@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023/VU-Cyberthon-2023/README.md",
+                "file": "2023/ARACTF2023/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/VU-Cyberthon-2023/README.md",
+                "file": "2023/ARACTF2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/VU-Cyberthon-2023/README.md",
+                "file": "2023/ARACTF2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/VU-Cyberthon-2023/README.md"
+                "file": "2023/ARACTF2023/README.md"
               }
             }
           }
@@ -173,8 +173,8 @@
   },
   "active": "711e8141553675a9",
   "lastOpenFiles": [
-    "2023/0xL4ughCTF 2023/README.md",
     "2023/VU-Cyberthon-2023/README.md",
+    "2023/0xL4ughCTF 2023/README.md",
     "2023/VU-Cyberthon-2023",
     "2023/ARACTF2023/README.md",
     "2023/LACTF-2023/README.md",
