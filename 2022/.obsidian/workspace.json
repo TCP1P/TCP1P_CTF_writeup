@@ -1,52 +1,35 @@
 {
   "main": {
-    "id": "4c0409ed7591ba4c",
+    "id": "862771e0810b12b0",
     "type": "split",
     "children": [
       {
-        "id": "bca1bb28313b04f9",
+        "id": "af85a2cc34fcd257",
         "type": "tabs",
         "children": [
           {
-            "id": "3b5962e98d011de8",
+            "id": "ccc56e45a9e3ef12",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023/KalmarCTF-2023/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "03cafe10be8ad8c2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "4804650776430b5c",
+    "id": "c85aa5eeb0957cd2",
     "type": "split",
     "children": [
       {
-        "id": "0e2ea75063aedbc8",
+        "id": "a8982e02d85f6b58",
         "type": "tabs",
         "children": [
           {
-            "id": "dda2f2ac5d697884",
+            "id": "7b30ce0fbe124bd5",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +39,7 @@
             }
           },
           {
-            "id": "cea1a1732bbd4758",
+            "id": "45f99c44daf0f087",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -71,7 +54,7 @@
             }
           },
           {
-            "id": "09aefc050bc2aa5a",
+            "id": "d94a0af6f762a397",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -85,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "6b6ce11dc9cf1f82",
+    "id": "19e317944387d037",
     "type": "split",
     "children": [
       {
-        "id": "c90deb156513a322",
+        "id": "ed3caf52de585c0d",
         "type": "tabs",
         "children": [
           {
-            "id": "8b420389797f3889",
+            "id": "4b48852966cdcc9f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,19 +92,18 @@
             }
           },
           {
-            "id": "427d1310fb19206a",
+            "id": "84a0fdb770014097",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "6d3b8cc745d5a2cc",
+            "id": "8cb5757d2e31a1ed",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,21 +114,19 @@
             }
           },
           {
-            "id": "390839dfd0d0fbff",
+            "id": "c6ec9c5fb892ec75",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md"
-              }
+              "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -159,23 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "03cafe10be8ad8c2",
-  "lastOpenFiles": [
-    "2023/Pragyan CTF 2023/README.md",
-    "2023/KalmarCTF-2023/README.md",
-    "2023/Pragyan CTF 2023",
-    "2023/ARACTF2023/README.md",
-    "2023/0xL4ughCTF 2023/README.md",
-    "2023/KalmarCTF-2023",
-    "2023/VU-Cyberthon-2023/README.md",
-    "2023/VU-Cyberthon-2023",
-    "2023/LACTF-2023/README.md",
-    "2023/HackTMCTF-quals/README.md",
-    "2023/Knightctf-2023/README.md",
-    "2023/bbctf-2023/README.md",
-    "2023/DiceCTF-2023/README.md",
-    "2023/bbctf-2023/Pasted image 20230206062127.png",
-    "2023/bbctf-2023/Pasted image 20230206062215.png",
-    "2023/bbctf-2023/Pasted image 20230206062218.png"
-  ]
+  "active": "ccc56e45a9e3ef12",
+  "lastOpenFiles": []
 }
