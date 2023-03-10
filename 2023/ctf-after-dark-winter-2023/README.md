@@ -93,6 +93,55 @@ username='UNION/**/SELECT/**/"admin",'asd&password=asd
 
 Setelah itu kita akan mendapatkan flagnya di response content.
 
+# Jester - web
+
+```python
+from requests import *
+import re
+import math
+
+url = "https://jester.acmcyber.com/"
+
+# biar tak terjebak karna cookies pas request
+session = Session()
+r = session.get(url)
+cok = session.cookies.get_dict()
+
+# Ronde 1 = Pertambahan
+x1 = re.findall("What is (.*) \?<\/p>", r.content.decode('utf-8'))
+data = eval(x1[0])
+
+ans = {'answer': data}
+print('r1 =', ans)
+
+r1 = session.post(url=url+'validate', data=ans)
+
+# Ronde 2 = Quadratic Equation 
+x2 = re.findall("What are the roots of (.*) \?<\/p>", r1.content.decode())
+
+quadratic = re.findall(r'\d+', x2[0])
+coefficients = [int(coefficient) for coefficient in quadratic]
+coefficients.pop(1)
+
+x = coefficients[0]
+y = coefficients[1]
+z = coefficients[2]
+
+cal = (y**2) - (4*x*z)
+
+sol1 = (-y - math.sqrt(cal)) / (2*x)
+sol2 = (-y + math.sqrt(cal)) / (2*x)
+
+rd1 = round(sol1)
+rd2 = round(sol2)
+
+ans2 = {'answer1': rd1, 'answer2': rd2}
+print('r2 =',ans2)
+
+r2 = session.post(url=url+'validate', data=ans2)
+print(r2.content)
+```
+
 # Our Team Writeup
 
 Daffainfo: https://github.com/daffainfo/ctf-writeup/tree/main/CTF%20After%20Dark%20-%20Winter%202023
