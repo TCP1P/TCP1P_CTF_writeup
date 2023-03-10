@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "eea85803c028e168",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023/ctf-after-dark-winter-2023/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md",
+                "file": "2023/ctf-after-dark-winter-2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md",
+                "file": "2023/ctf-after-dark-winter-2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022/BuckeyeCTF 2022/README.md"
+                "file": "2023/ctf-after-dark-winter-2023/README.md"
               }
             }
           }
@@ -159,8 +171,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "03cafe10be8ad8c2",
+  "active": "eea85803c028e168",
   "lastOpenFiles": [
+    "2022/BuckeyeCTF 2022/README.md",
+    "2023/ctf-after-dark-winter-2023/README.md",
+    "2023/ctf-after-dark-winter-2023",
     "2023/Pragyan CTF 2023/README.md",
     "2023/KalmarCTF-2023/README.md",
     "2023/Pragyan CTF 2023",
