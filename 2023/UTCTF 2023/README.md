@@ -200,7 +200,7 @@ p.interactive()
 #utflag{one_printf_to_rule_them_all}
 ```
 
-## Our Time WriteUp
+## Our Team WriteUp
 Daffainfo [https://github.com/daffainfo/ctf-writeup/tree/main/UTCTF%202023](https://github.com/daffainfo/ctf-writeup/tree/main/UTCTF%202023)
 
 List
