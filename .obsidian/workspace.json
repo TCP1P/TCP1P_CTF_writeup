@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023/Untitled/README.md",
+                "file": "2023/wolvctf-2023/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/Untitled/README.md",
+                "file": "2023/wolvctf-2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/Untitled/README.md",
+                "file": "2023/wolvctf-2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/Untitled/README.md"
+                "file": "2023/wolvctf-2023/README.md"
               }
             }
           }
@@ -159,13 +159,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f5b6c42b06b34b8",
+  "active": "dda2f2ac5d697884",
   "lastOpenFiles": [
-    "2023/Untitled/Pasted image 20230323041128.png",
-    "2023/Untitled/Pasted image 20230323041112.png",
+    "2023/wolvctf-2023/Pasted image 20230323041128.png",
+    "2023/wolvctf-2023/Pasted image 20230323041112.png",
     "2023/nullcon HackIM CTF Berlin/README.md",
-    "2023/Untitled/README.md",
-    "2023/Untitled",
+    "2023/wolvctf-2023/README.md",
+    "2023/wolvctf-2023",
     "2022/BuckeyeCTF 2022/README.md",
     "2023/KalmarCTF-2023/README.md",
     "2023/ctf-after-dark-winter-2023/README.md",
