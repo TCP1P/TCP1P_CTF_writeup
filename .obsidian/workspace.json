@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "6f5b6c42b06b34b8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023/Untitled/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/nullcon HackIM CTF Berlin/README.md",
+                "file": "2023/Untitled/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/nullcon HackIM CTF Berlin/README.md",
+                "file": "2023/Untitled/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/nullcon HackIM CTF Berlin/README.md"
+                "file": "2023/Untitled/README.md"
               }
             }
           }
@@ -146,12 +159,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e5ff7fd0f6ba9db3",
+  "active": "6f5b6c42b06b34b8",
   "lastOpenFiles": [
+    "2023/Untitled/Pasted image 20230323041128.png",
+    "2023/Untitled/Pasted image 20230323041112.png",
+    "2023/nullcon HackIM CTF Berlin/README.md",
+    "2023/Untitled/README.md",
+    "2023/Untitled",
     "2022/BuckeyeCTF 2022/README.md",
     "2023/KalmarCTF-2023/README.md",
     "2023/ctf-after-dark-winter-2023/README.md",
-    "2023/nullcon HackIM CTF Berlin/README.md",
     "2023/nullcon HackIM CTF Berlin",
     "2023/ctf-after-dark-winter-2023",
     "2023/Pragyan CTF 2023/README.md",
