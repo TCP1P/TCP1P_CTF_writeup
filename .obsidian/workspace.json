@@ -4,47 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "bca1bb28313b04f9",
+        "id": "699bf2625f426deb",
         "type": "tabs",
         "children": [
           {
-            "id": "6f5b6c42b06b34b8",
+            "id": "b61314f331de4c4c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023/wolvctf-2023/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e5ff7fd0f6ba9db3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023/HTB Cyber Apocalypse 2023/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1cb06388a9f7b422",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023/LineCTF 2023/README.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/LineCTF 2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/LineCTF 2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2023/LineCTF 2023/README.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -171,16 +138,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1cb06388a9f7b422",
+  "active": "b61314f331de4c4c",
   "lastOpenFiles": [
+    "2023/wolvctf-2023/README.md",
     "2023/HTB Cyber Apocalypse 2023/README.md",
     "2023/LineCTF 2023/README.md",
+    "2023/UMASSCTF 2023/README.md",
+    "2023/UMASC.md",
+    "2023/UMASSCTF 2023",
     "2023/LineCTF 2023",
     "2023/HTB Cyber Apocalypse 2023/Pasted image 20230324115213.png",
     "2023/nullcon HackIM CTF Berlin/README.md",
     "2023/wolvctf-2023/Pasted image 20230323041128.png",
     "2023/wolvctf-2023/Pasted image 20230323041112.png",
-    "2023/wolvctf-2023/README.md",
     "2023/wolvctf-2023",
     "2022/BuckeyeCTF 2022/README.md",
     "2023/KalmarCTF-2023/README.md",
