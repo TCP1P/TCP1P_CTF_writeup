@@ -8,11 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b61314f331de4c4c",
+            "id": "391f721a9c8b637d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "2023/Wrectit Quals 2023/README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2023/Wrectit Quals 2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2023/Wrectit Quals 2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2023/Wrectit Quals 2023/README.md"
+              }
             }
           }
         ],
@@ -138,8 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b61314f331de4c4c",
+  "active": "391f721a9c8b637d",
   "lastOpenFiles": [
+    "tmp.md",
+    "2023/Wrectit Quals 2023/README.md",
+    "2023/Wrectit Quals 2023",
     "2023/wolvctf-2023/README.md",
     "2023/HTB Cyber Apocalypse 2023/README.md",
     "2023/LineCTF 2023/README.md",
