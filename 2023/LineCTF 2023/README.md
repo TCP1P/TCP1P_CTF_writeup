@@ -123,7 +123,9 @@ https://github.com/daffainfo/ctf-writeup/tree/main/LINE%20CTF%202023
 
 @kaelanalysis
 
-https://github.com/maulvialf/CTF-Writeups/tree/main/2023/linectf
+- https://github.com/maulvialf/CTF-Writeups/tree/main/2023/linectf
+- https://maulvialf.medium.com/write-up-reverse-engingeering-line-ctf-2023-fishing-and-jumpit-18d5a6c3092e
+
 - rev
 	1. fishing
 	2. jumpit
