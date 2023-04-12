@@ -1,16 +1,3 @@
----
-title: 'BucketCTF 2023 | Writeup'
----
-
-BucketCTF 2023
-===
-
-![Awesome](https://awesome.re/badge.svg)
-
-![BucketCTF 2023](https://ctftime.org/media/cache/f3/65/f36574a6176cee6ee8c8df88e74833b3.png)
-
-Play with the [TCP1P](https://ctftime.org/team/187248) team.
-
 ## MISC / Transmission
 
 >The United States space force was one day containing routine tests on intergalactic light when they captured a random beam of light. **Senior General Hexy Pictora** believes this beam of light may actually be a new communication method used by aliens. Analyze the image to find out of any secrets are present.
