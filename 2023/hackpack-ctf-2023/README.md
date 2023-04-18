@@ -176,3 +176,14 @@ rand_num()
 
 p.interactive()
 ```
+
+Our team writeups
+===
+
+- daffainfo: https://github.com/daffainfo/ctf-writeup/tree/main/Hackpack%20CTF%202023
+
+| Category | Challenge |
+| --- | --- |
+| Web | [HackerChat](/Hackpack%20CTF%202023/HackerChat/)
+| Web | [WolfHowl](/Hackpack%20CTF%202023/WolfHowl/)
+| Misc | [Welcome!](/Hackpack%20CTF%202023/Welcome!/)
