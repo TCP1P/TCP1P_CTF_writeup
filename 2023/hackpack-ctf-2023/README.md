@@ -192,4 +192,4 @@ Our team writeups
 
 | Category | Challenge |
 | --- | --- |
-| Web | WASM-safe |
+| Rev | WASM-safe |

@@ -40,7 +40,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,6 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2023/hackpack-ctf-2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,6 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2023/hackpack-ctf-2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +145,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2023/hackpack-ctf-2023/README.md"
+              }
             }
           }
         ],
@@ -163,7 +167,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8f4f3ae92c6bef2b",
+  "active": "3e2bec02b8c18566",
   "lastOpenFiles": [
     "2023/hackpack-ctf-2023/README.md",
     "2023/plaidCTF 2023/README.md",
