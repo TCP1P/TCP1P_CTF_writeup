@@ -187,3 +187,9 @@ Our team writeups
 | Web | [HackerChat](/Hackpack%20CTF%202023/HackerChat/)
 | Web | [WolfHowl](/Hackpack%20CTF%202023/WolfHowl/)
 | Misc | [Welcome!](/Hackpack%20CTF%202023/Welcome!/)
+
+- Maulvi Alfansuri: https://maulvialf.medium.com/reversing-webassembly-write-up-hackpack-2023-wasm-safe-6ca78e3f4ee3
+
+| Category | Challenge |
+| --- | --- |
+| Web | WASM-safe |

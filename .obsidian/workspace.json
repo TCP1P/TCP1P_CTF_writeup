@@ -35,12 +35,8 @@
             "id": "8f4f3ae92c6bef2b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023/plaidCTF 2023/README.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ],
@@ -110,7 +106,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/plaidCTF 2023/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +122,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/plaidCTF 2023/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,9 +143,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2023/plaidCTF 2023/README.md"
-              }
+              "state": {}
             }
           }
         ],
