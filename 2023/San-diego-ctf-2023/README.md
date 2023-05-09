@@ -1,6 +1,5 @@
 ---
-Archive:
-"https://drive.google.com/drive/folders/1xx240hie7UY9wiJSIHbDgwPoQdgIq3Uq?usp=sharing"
+Archive: "https://drive.google.com/drive/folders/1xx240hie7UY9wiJSIHbDgwPoQdgIq3Uq?usp=sharing"
 ---
 
 # tROPic-thunder - PWN
