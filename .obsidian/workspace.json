@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023/angstromctf-2023/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,14 +37,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023/San-diego-ctf-2023/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -118,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023/San-diego-ctf-2023/README.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +134,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023/San-diego-ctf-2023/README.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023/San-diego-ctf-2023/README.md"
+                "file": "README.md"
               }
             }
           }
@@ -179,18 +178,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "825932db43b069b6",
+  "active": "9a3fd772b5a88799",
   "lastOpenFiles": [
+    "2023/m0leConCTF-2023/README.md",
+    "2023/angstromctf-2023/README.md",
+    "2023/m0leConCTF-2023",
+    "README.md",
+    "some.md",
     "2023/San-diego-ctf-2023/README.md",
     "2023/San-diego-ctf-2023",
-    "2023/angstromctf-2023/README.md",
     "2023/WaniCtf 2023/README.md",
     "2023/WaniCtf 2023",
     "2023/umdctf-2023/README.md",
     "2023/Untitled.md",
     "2023/umdctf-2023",
     "2023/hackpack-ctf-2023/README.md",
-    "README.md",
     "().md",
     "tmp.md",
     "Untitled.canvas",
@@ -207,7 +209,6 @@
     "2023/BucketCtf 2023/README.md",
     "2023/BucketCtf 2023",
     "2023/Cursedctf-2023/README.md",
-    "2023/Cursedctf-2023",
     "2023/wolvctf-2023/README.md",
     "2023/HTB Cyber Apocalypse 2023/README.md",
     "2023/UMASSCTF 2023/README.md",
@@ -219,8 +220,6 @@
     "2022/BuckeyeCTF 2022/README.md",
     "2023/KalmarCTF-2023/README.md",
     "2023/ctf-after-dark-winter-2023/README.md",
-    "2023/Pragyan CTF 2023/README.md",
-    "2023/ARACTF2023/README.md",
     "2023/bbctf-2023/Pasted image 20230206062127.png",
     "2023/bbctf-2023/Pasted image 20230206062215.png",
     "2023/bbctf-2023/Pasted image 20230206062218.png"
